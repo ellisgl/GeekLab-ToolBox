@@ -2,6 +2,7 @@
     "name": "geeklab/toolbox",
     "description": "A collection of \"utility\" classes.",
     "type": "library",
+    "minimum-stability":"stable",
     "license": "GPL-3.0-or-later",
     "authors": [
         {
