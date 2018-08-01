@@ -4,7 +4,7 @@
  
  Usage: See [tests/unit/Arrays_exploreTest.php](tests/unit/Arrays_exploreTest.php) for using GeekLab\ToolBox\Arrays::renameKey() recursively.
   
- ## renameKey(array &$array, $oldKey, $newKey, bool $insert = FALSE, bool $replace = FALSE): bool
+ ## renameKey(array &$array, $oldKey, $newKey, bool $ignoreMissing = FALSE, bool $replace = FALSE): bool
  Description: Will rename a key in an array, which is passed in by reference.
  
  Usage:
