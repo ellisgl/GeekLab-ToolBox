@@ -72,10 +72,13 @@ class Arrays_exploreTest extends \Codeception\Test\Unit
 
         $this->Arrays->explore($array, function (&$value, $key)
         {
-            if ('@attributes' == $key)
+            if ('@' === substr($key, 0, 1))
             {
-                // Replace key '@attributes' with '_attributes'
-                $this->Arrays->renameKey($value, $key, '_attributes');
+                if ('attributes' == substr($key, 1))
+                {
+                    // Replace key '@attributes' with '_attributes'
+                    $this->Arrays->renameKey($value, $key, '_attributes');
+                }
             }
             elseif ('_' === substr($key, 0, 1))
             {
