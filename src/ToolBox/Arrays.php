@@ -26,21 +26,21 @@ class Arrays
      * Rename a key and preserve the key ordering.
      * Stolen from: https://stackoverflow.com/questions/13233405/change-key-in-associative-array-in-php
      *
-     * @param  array      &$array   The array.
-     * @param  int|string  $oldKey  The key you want to replace.
-     * @param  int|string  $newKey  The key you want to replace it with.
-     * @param  bool        $insert  Insert newKey if oldKey was not found?  Raise error if false.
-     * @param  bool        $replace If newKey matches a key in the array, remove that key? Raise error if false.
+     * @param  array      &$array        The array.
+     * @param  int|string $oldKey        The key you want to replace.
+     * @param  int|string $newKey        The key you want to replace it with.
+     * @param  bool       $ignoreMissing Insert newKey if oldKey was not found?  Raise error if false.
+     * @param  bool       $replace       If newKey matches a key in the array, remove that key? Raise error if false.
      * @return bool
      */
     public function renameKey(array &$array, $oldKey, $newKey,
-                              bool $insert = FALSE, bool $replace = FALSE): bool
+                              bool $ignoreMissing = FALSE, bool $replace = FALSE): bool
     {
         if (!empty($array))
         {
             if (!array_key_exists($oldKey, $array))
             {
-                if ($insert)
+                if ($ignoreMissing)
                 {
                     return FALSE;
                 }
