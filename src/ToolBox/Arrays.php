@@ -74,4 +74,48 @@ class Arrays
 
         return FALSE;
     }
+
+    /**
+     * Return the first key in an array.
+     *
+     * @param array $array
+     * @return int|null|string
+     */
+    public function firstKey(array $array)
+    {
+        reset($array);
+        return key($array);
+    }
+
+    /**
+     * Return the last key in an array.
+     *
+     * @param array $array
+     * @return int|null|string
+     */
+    public function lastKey(array$array)
+    {
+        end($array);
+        return key($array);
+    }
+
+    /**
+     * Return the first value in an array
+     * @param array $array
+     * @return mixed
+     */
+    public function firstValue(array $array)
+    {
+        return array_shift($array);
+    }
+
+    /**
+     * Return the last value in an array
+     * @param array $array
+     * @return mixed
+     */
+    public function lastValue(array $array)
+    {
+        return array_pop($array);
+    }
 }

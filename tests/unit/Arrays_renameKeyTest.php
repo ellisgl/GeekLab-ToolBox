@@ -70,6 +70,19 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
     }
 
     /** @test */
+    public function itCanReplaceExistingKeyIfNewKeyMatchesWhenReplaceIsTrue()
+    {
+        $arr = ['x', 'y', 'z' => '1'];
+
+        // Insert a new key, when old key is not found.
+        $this->Arrays->renameKey($arr, 1, 'z', false, TRUE);
+
+        // How to test for no error? or test for $this->fail
+        $this->assertEquals(['x', 'z' => 'y'], $arr);
+        //print_r($arr);
+    }
+
+    /** @test */
     public function itWillRaiseErrorIfOldKeyIsNotFound()
     {
         $arr = ['x', 'y', 'z' => '1'];
@@ -90,7 +103,7 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
     }
 
     /** @test */
-    public function itWillNotRaiseErrorIfOldKeyIsNotFoundWhenIgnoreMissingIsTrue()
+    public function itWontRaiseErrorIfOldKeyIsNotFoundWhenIgnoreMissingIsTrue()
     {
         $arr = ['x', 'y', 'z' => '1'];
 
@@ -102,16 +115,4 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
         //print_r($arr);
     }
 
-    /** @test */
-    public function itWillReplaceExistingKeyIfNewKeyMatchesWhenReplaceIsTrue()
-    {
-        $arr = ['x', 'y', 'z' => '1'];
-
-        // Insert a new key, when old key is not found.
-        $this->Arrays->renameKey($arr, 1, 'z', false, TRUE);
-
-        // How to test for no error? or test for $this->fail
-        $this->assertEquals(['x', 'z' => 'y'], $arr);
-        //print_r($arr);
-    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Strings_beingsWithTest extends \Codeception\Test\Unit
+class Strings_endsWithTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -29,14 +29,14 @@ class Strings_beingsWithTest extends \Codeception\Test\Unit
     // tests
 
     /** @test */
-    public function itCanMatchBeginsWith()
+    public function itCanMatchEndsWith()
     {
-        $this->assertTrue($this->Strings->beginsWith($this->testStr, 'Silly'));
+        $this->assertTrue($this->Strings->endsWith($this->testStr, 'pie.'));
     }
 
     /** @test */
-    public function itCantMatchBeginsWith()
+    public function itCantMatchEndsWith()
     {
-        $this->assertFalse($this->Strings->beginsWith($this->testStr, 'Sally'));
+        $this->assertFalse($this->Strings->endsWith($this->testStr, 'Peter'));
     }
 }

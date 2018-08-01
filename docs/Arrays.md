@@ -1,4 +1,7 @@
 # \GeekLab\ToolBox\Arrays
+## Basic usage:
+`$Arrays = new \GeekLab\ToolBox\Arrays();`
+
 ## explore(array &$array, callable $callback): void
 Description: Recursive version of array_walk and is different from array_walk_recursive, since array_walk_recursive will only visit leaf nodes. \GeekLab\ToolBox\Arrays::explore will hit visit all nodes.
  
@@ -9,11 +12,57 @@ Description: Will rename a key in an array, which is passed in by reference.
  
 Usage:
  
-    $Arrays = new \GeekLab\ToolBox\Arrays();
-    
-    $arr = [
+    $array = [
         'xyz' => 1,
         'def' => 2
     ];
      
-    $Arrays->renameKey($arr, 'def', 'DefLeppard');
+    $Arrays->renameKey($array, 'def', 'DefLeppard');
+
+## firstKey(array $array)
+Description: Returns the first key of an array.
+
+Usage:
+  
+    $array = [
+            'xyz' => 1,
+            'def' => 2
+        ];
+ 
+    $fk = $Arrays->firstKey($array);
+
+## lastKey(array $array)
+Description: Returns the last key of an array.
+
+Usage:
+
+    $array = [
+                'xyz' => 1,
+                'def' => 2
+            ];
+     
+    $lk = $Arrays->lastKey($array);
+
+## firstValue(array $array)
+Description: Returns the first value of an array.
+
+Usage:
+  
+    $array = [
+            'xyz' => 1,
+            'def' => 2
+        ];
+ 
+    $fv = $Arrays->firstValue($array);
+
+## lastValue(array $array)
+Description: Returns the last value of an array.
+
+Usage:
+  
+    $array = [
+            'xyz' => 1,
+            'def' => 2
+        ];
+ 
+    $fv = $Arrays->lastValue($array);
