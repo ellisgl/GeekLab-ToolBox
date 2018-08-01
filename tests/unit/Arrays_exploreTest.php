@@ -72,8 +72,7 @@ class Arrays_exploreTest extends \Codeception\Test\Unit
 
         $this->Arrays->explore($array, function (&$value, $key)
         {
-            //if(false !==  filter_var($variable, FILTER_VALIDATE_INT))
-            if ('@attributes' === $key)
+            if ('@attributes' == $key)
             {
                 // Replace key '@attributes' with '_attributes'
                 $this->Arrays->renameKey($value, $key, '_attributes');
