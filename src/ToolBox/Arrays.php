@@ -23,7 +23,7 @@ class Arrays
     }
 
     /**
-     * Rename a key and preserve the key ordering.
+     * Rename / Change / Modify a key and preserve the key ordering.
      * Stolen from: https://stackoverflow.com/questions/13233405/change-key-in-associative-array-in-php
      *
      * @param  array      &$array        The array.
