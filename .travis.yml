@@ -7,4 +7,4 @@ language: php
 php:
   - '7.2'
 script:
- - php vendor/bin/codecept run
+ - php vendor/bin/codecept run unit
