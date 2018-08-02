@@ -1,6 +1,6 @@
 {
     "name": "geeklab/toolbox",
-    "version": "1.0.1",
+    "version": "1.0.4",
     "description": "A collection of \"utility\" classes.",
     "type": "library",
     "license": "GPL-3.0-or-later",
