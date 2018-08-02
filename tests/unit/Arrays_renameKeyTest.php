@@ -107,12 +107,9 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
     {
         $arr = ['x', 'y', 'z' => '1'];
 
-        // Insert a new key, when old key is not found.
+        // This should not raise an error, since ignoreMissing is set to true.
         $this->Arrays->renameKey($arr, 'a', 'b', TRUE);
-
-        // How to test for no error? or test for $this->fail
-        //$this->assertError('Old key does not exist', E_USER_WARNING);
-        //print_r($arr);
+        $this->assertNoErrors();
     }
-
 }
+
