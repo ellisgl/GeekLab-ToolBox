@@ -5,4 +5,7 @@ Just some "utility" classes for PHP.
 `composer require geeklab/toolbox`
 
 ## Docs
-[Arrays](docs/Arrays.md)
+* [Arrays](docs/Arrays.md)
+* [Strings](docs/Strings.md)
+* [Is](docs/Is.md)
+
