@@ -1,7 +1,9 @@
 # GeekLab-ToolBox
+![Travis Build Status](https://travis-ci.com/ellisgl/GeekLab-ToolBox.svg?branch=master)
+
 Just some "utility" classes for PHP.
 
-![Travis Build Status](https://travis-ci.com/ellisgl/GeekLab-ToolBox.svg?branch=master)
+
 ## Install
 `composer require geeklab/toolbox`
 
