@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c51adb9dbac9e48118a29c2a4e928cb",
+    "content-hash": "8505e6d413b8616efb3406b073adba3d",
     "packages": [],
     "packages-dev": [
         {
@@ -232,16 +232,16 @@
         },
         {
             "name": "digitickets/phpunit-errorhandler",
-            "version": "4.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitickets/phpunit-errorhandler.git",
-                "reference": "6dbbbacf97376c7a77f0a64ed557001feb4552a7"
+                "reference": "7e3e47466b8dcc95389d2864fdae8984610ddc82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digitickets/phpunit-errorhandler/zipball/6dbbbacf97376c7a77f0a64ed557001feb4552a7",
-                "reference": "6dbbbacf97376c7a77f0a64ed557001feb4552a7",
+                "url": "https://api.github.com/repos/digitickets/phpunit-errorhandler/zipball/7e3e47466b8dcc95389d2864fdae8984610ddc82",
+                "reference": "7e3e47466b8dcc95389d2864fdae8984610ddc82",
                 "shasum": ""
             },
             "require": {
@@ -267,7 +267,7 @@
                 }
             ],
             "description": "A simple trait to add to your PHPUnit test allowing you to track and test PHP errors, warnings and notices",
-            "time": "2017-11-10T11:31:51+00:00"
+            "time": "2018-08-02T15:51:14+00:00"
         },
         {
             "name": "doctrine/instantiator",
