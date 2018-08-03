@@ -4,9 +4,10 @@
 `$Strings = new \GeekLa\ToolBox\Strings();`
 
 ## beginsWith(string $haystack, string $needle): bool
-Description: Does a string begin with $needle?
+### Description:
+Does a string begin with $needle?
  
-Usage:
+### Usage:
     
     if($Strings->beginWith('This is my haystack', 'This')))
     {
@@ -14,9 +15,10 @@ Usage:
     }
   
 ## endsWith(string $haystack, string $needle): bool
-Description: Does a string end with $needle?
+### Description:
+Does a string end with $needle?
  
-Usage:
+### Usage:
     
     if($Strings->endsWith('This is my haystack', 'stack')))
     {

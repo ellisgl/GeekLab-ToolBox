@@ -3,14 +3,17 @@
 `$Arrays = new \GeekLab\ToolBox\Arrays();`
 
 ## explore(array &$array, callable $callback): void
-Description: Recursive version of array_walk and is different from array_walk_recursive, since array_walk_recursive will only visit leaf nodes. \GeekLab\ToolBox\Arrays::explore will hit visit all nodes.
- 
-Usage: See [tests/unit/Arrays_exploreTest.php](tests/unit/Arrays_exploreTest.php) for using GeekLab\ToolBox\Arrays::renameKey() recursively.
+### Description:
+Recursive version of array_walk and is different from array_walk_recursive, since array_walk_recursive will only visit leaf nodes. \GeekLab\ToolBox\Arrays::explore will hit visit all nodes.
+
+### Usage:
+See [tests/unit/Arrays_exploreTest.php](tests/unit/Arrays_exploreTest.php) for using GeekLab\ToolBox\Arrays::renameKey() recursively.
   
 ## renameKey(array &$array, $oldKey, $newKey, bool $ignoreMissing = FALSE, bool $replace = FALSE): bool
-Description: Will rename a key in an array, which is passed in by reference.
+### Description:
+Will rename a key in an array, which is passed in by reference.
  
-Usage:
+### Usage:
  
     $array = [
         'xyz' => 1,
@@ -20,9 +23,10 @@ Usage:
     $Arrays->renameKey($array, 'def', 'DefLeppard');
 
 ## firstKey(array $array)
-Description: Returns the first key of an array.
+### Description:
+Returns the first key of an array.
 
-Usage:
+### Usage:
   
     $array = [
             'xyz' => 1,
@@ -32,9 +36,10 @@ Usage:
     $fk = $Arrays->firstKey($array);
 
 ## lastKey(array $array)
-Description: Returns the last key of an array.
+### Description:
+Returns the last key of an array.
 
-Usage:
+### Usage:
 
     $array = [
                 'xyz' => 1,
@@ -44,9 +49,10 @@ Usage:
     $lk = $Arrays->lastKey($array);
 
 ## firstValue(array $array)
-Description: Returns the first value of an array.
+### Description:
+Returns the first value of an array.
 
-Usage:
+### Usage:
   
     $array = [
             'xyz' => 1,
@@ -56,9 +62,9 @@ Usage:
     $fv = $Arrays->firstValue($array);
 
 ## lastValue(array $array)
-Description: Returns the last value of an array.
+### Description: Returns the last value of an array.
 
-Usage:
+### Usage:
   
     $array = [
             'xyz' => 1,
