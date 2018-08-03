@@ -1,4 +1,6 @@
 sudo: false
+before_install:
+- bash ./preflight.sh # Don't trigger on .MD changes.
 before_script:
 - composer self
 - composer --version
