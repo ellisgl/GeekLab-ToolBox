@@ -26,11 +26,11 @@ class Arrays_exploreTest extends \Codeception\Test\Unit
     /** @test */
     public function testExploreWithRenameKeys()
     {
-        /**
-         * This test will test renameKeys in a recursive manor.
-         * I can't think of any other tests for explore at this time.
-         * http://php.net/manual/en/function.array-walk.php#122991
-         */
+        $cnt = [
+            '@' => 0,
+            '_' => 0
+        ];
+
         $array = [
             '_10fish' => 'xyz',
             '_11fish' => [
@@ -52,52 +52,22 @@ class Arrays_exploreTest extends \Codeception\Test\Unit
         ];
 
         $expected = [
-            '10fish' => 'xyz',
-            '11fish' => [
-                22         => [
-                    'a',
-                    'b',
-                    'c' => [
-                        33 => ['def', 'xyz'],
-                        0  => 'x',
-                        1  => 'y',
-                        44 => 'z'
-                    ]
-                ],
-                'someFish' => [
-                    'xyz',
-                    '_attributes' => ['type' => 'cod']
-                ]
-            ]
+            '@' => 1,
+            '_' => 5
         ];
 
-        $this->Arrays->explore($array, function (&$value, $key)
+        $this->Arrays->explore($array, function ($value, $key) use (&$cnt)
         {
             if ('@' === substr($key, 0, 1))
             {
-                if ('attributes' == substr($key, 1))
-                {
-                    // Replace key '@attributes' with '_attributes'
-                    $this->Arrays->renameKey($value, $key, '_attributes');
-                }
+                $cnt['@']++;
             }
             elseif ('_' === substr($key, 0, 1))
             {
-                $a = substr($key, 1);
-
-                if (false !== filter_var($a, FILTER_VALIDATE_INT))
-                {
-                    // convert _{integer like} to integer key.
-                    $this->Arrays->renameKey($value, $key, intval($a));
-                }
-                elseif (is_numeric(substr($a, 0, 1)))
-                {
-                    // convert _{numeric}{alpha} to string key.
-                    $this->Arrays->renameKey($value, $key, $a);
-                }
+                $cnt['_']++;
             }
         });
 
-        $this->assertEquals($expected, $array);
+        $this->assertEquals($expected, $cnt);
     }
 }
