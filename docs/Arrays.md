@@ -9,7 +9,7 @@ Recursive version of array_walk and is different from array_walk_recursive, sinc
 ### Usage:
 See [tests/unit/Arrays_exploreTest.php](tests/unit/Arrays_exploreTest.php) for using GeekLab\ToolBox\Arrays::renameKey() recursively.
   
-## renameKey(array $array, $oldKey, $newKey, bool $recursive):
+## renameKey(array $array, $oldKey, $newKey, bool $recursive = FALSE):
 ### Description:
 Will return an array with a renamed a key with the order preserved.
  
