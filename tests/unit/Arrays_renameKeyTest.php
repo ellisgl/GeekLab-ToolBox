@@ -16,100 +16,226 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
      */
     protected $Arrays;
 
+    private $array;
+
     protected function _before()
     {
         $this->Arrays = new GeekLab\ToolBox\Arrays();
+        $this->array  = [
+            '_10fish' => 'xyz',
+            '_11fish' => [
+                '_22'      => [
+                    '_10fish' => 'zyx',
+                    'a',
+                    'b',
+                    'c'       => [
+                        '_33' => ['def', 'xyz'],
+                        'x',
+                        'y',
+                        '_44' => 'z'
+                    ]
+                ],
+                'someFish' => [
+                    'xyz',
+                    '@attributes' => ['type' => 'cod']
+                ]
+            ],
+            't',
+            'u'
+        ];
     }
 
     protected function _after()
     {
     }
 
-    // tests
+    /** @test */
+    public function itCanChangeOnlyARootLevelStringKeyToString()
+    {
+        $expArr = [
+            '10fish'  => 'xyz',
+            '_11fish' => [
+                '_22'      => [
+                    '_10fish' => 'zyx',
+                    'a',
+                    'b',
+                    'c'       => [
+                        '_33' => ['def', 'xyz'],
+                        'x',
+                        'y',
+                        '_44' => 'z'
+                    ]
+                ],
+                'someFish' => [
+                    'xyz',
+                    '@attributes' => ['type' => 'cod']
+                ]
+            ],
+            't',
+            'u'
+        ];
+
+        $newArr = $this->Arrays->renameKey($this->array, '_10fish', '10fish');
+
+        $this->assertEquals($expArr, $newArr);
+    }
+
 
     /** @test */
-    public function itCanChangeKey()
+    public function itCanChangeStingKeyToStringRecursively()
     {
-        $arr = ['tree' => 'a', 'dog' => 'b', 'fish' => 'c'];
+        $expArr = [
+            '10fish'  => 'xyz',
+            '_11fish' => [
+                '_22'      => [
+                    '10fish' => 'zyx',
+                    'a',
+                    'b',
+                    'c'      => [
+                        '_33' => ['def', 'xyz'],
+                        'x',
+                        'y',
+                        '_44' => 'z'
+                    ]
+                ],
+                'someFish' => [
+                    'xyz',
+                    '@attributes' => ['type' => 'cod']
+                ]
+            ],
+            't',
+            'u'
+        ];
 
-        $this->Arrays->renameKey($arr, 'fish', 'rock');
-        self::assertEquals(['tree' => 'a', 'dog' => 'b', 'rock' => 'c'], $arr);
-        //print_r($arr);
+        $newArr = $this->Arrays->renameKey($this->array, '_10fish', '10fish', TRUE);
+
+        $this->assertEquals($expArr, $newArr);
     }
 
     /** @test */
-    public function itCanWorkWithMixedKeys()
+    public function itCanChangeOnlyARootLevelIntegerKeyToString()
     {
-        $arr = ['x', 'y', 'z' => '1'];
+        $expArr = [
+            '_10fish' => 'xyz',
+            '_11fish' => [
+                '_22'      => [
+                    '_10fish' => 'zyx',
+                    'a',
+                    'b',
+                    'c'       => [
+                        '_33' => ['def', 'xyz'],
+                        'x',
+                        'y',
+                        '_44' => 'z'
+                    ]
+                ],
+                'someFish' => [
+                    'xyz',
+                    '@attributes' => ['type' => 'cod']
+                ]
+            ],
+            'ZERO'    => 't',
+            1         => 'u'
+        ];
 
-        $this->Arrays->renameKey($arr, 'z', 'a');
-        self::assertEquals(['x', 'y', 'a' => '1'], $arr);
-        //print_r($arr);
+        $newArr = $this->Arrays->renameKey($this->array, 0, 'ZERO', FALSE);
+
+        $this->assertEquals($expArr, $newArr);
     }
 
     /** @test */
-    public function itCanChangeAnIntegerIndexToString()
+    public function itCanChangeAnIntegerKeyToStringRecursively()
     {
-        $arr = ['x', 'y', 'z' => '1'];
+        $expArr = [
+            '_10fish' => 'xyz',
+            '_11fish' => [
+                '_22'      => [
+                    '_10fish' => 'zyx',
+                    0         => 'a',
+                    'ONE'     => 'b',
+                    'c'       => [
+                        '_33' => [
+                            0     => 'def',
+                            'ONE' => 'xyz'
+                        ],
+                        0     => 'x',
+                        'ONE' => 'y',
+                        '_44' => 'z'
+                    ]
+                ],
+                'someFish' => [
+                    0             => 'xyz',
+                    '@attributes' => ['type' => 'cod']
+                ]
+            ],
+            0         => 't',
+            'ONE'     => 'u'
+        ];
 
-        // Changing integer index to string.
-        $this->Arrays->renameKey($arr, 1, 'fred');
-        $this->assertEquals(['x', 'fred' => 'y', 'z' => '1'], $arr);
-        //print_r($arr);
+        $newArr = $this->Arrays->renameKey($this->array, 1, 'ONE', TRUE);
+
+        $this->assertEquals($expArr, $newArr);
     }
 
     /** @test */
-    public function itCanChangeAStringIndexToInteger()
+    public function itCanChangeOnlyARootLevelStringKeyToInteger()
     {
-        $arr = ['x', 'fred' => 'y', 'z' => '1'];
+        $expArr = [
+            10        => 'xyz',
+            '_11fish' => [
+                '_22'      => [
+                    '_10fish' => 'zyx',
+                    'a',
+                    'b',
+                    'c'       => [
+                        '_33' => ['def', 'xyz'],
+                        'x',
+                        'y',
+                        '_44' => 'z'
+                    ]
+                ],
+                'someFish' => [
+                    'xyz',
+                    '@attributes' => ['type' => 'cod']
+                ]
+            ],
+            0         => 't',
+            1         => 'u'
+        ];
 
-        // Changing string index to integer
-        $this->Arrays->renameKey($arr, 'fred', 1);
-        $this->assertEquals(['x', 'y', 'z' => '1'], $arr);
-        //print_r($arr);
+        $newArr = $this->Arrays->renameKey($this->array, '_10fish', 10);
+
+        $this->assertEquals($expArr, $newArr);
     }
 
     /** @test */
-    public function itCanReplaceExistingKeyIfNewKeyMatchesWhenReplaceIsTrue()
+    public function itCanChangeAStringKeyToIntegerRecursively()
     {
-        $arr = ['x', 'y', 'z' => '1'];
+        $expArr = [
+            10        => 'xyz',
+            '_11fish' => [
+                '_22'      => [
+                    10  => 'zyx',
+                    0   => 'a',
+                    1   => 'b',
+                    'c' => [
+                        '_33' => ['def', 'xyz'],
+                        'x',
+                        'y',
+                        '_44' => 'z'
+                    ]
+                ],
+                'someFish' => [
+                    'xyz',
+                    '@attributes' => ['type' => 'cod']
+                ]
+            ],
+            0         => 't',
+            1         => 'u'
+        ];
 
-        // Insert a new key, when old key is not found.
-        $this->Arrays->renameKey($arr, 1, 'z', false, TRUE);
+        $newArr = $this->Arrays->renameKey($this->array, '_10fish', 10, TRUE);
 
-        // How to test for no error? or test for $this->fail
-        $this->assertEquals(['x', 'z' => 'y'], $arr);
-        //print_r($arr);
-    }
-
-    /** @test */
-    public function itWillRaiseErrorIfOldKeyIsNotFound()
-    {
-        $arr = ['x', 'y', 'z' => '1'];
-
-        // Changing a key that does not exist should thrown error with default settings.
-        $this->Arrays->renameKey($arr, 'fred', 'tim');
-        $this->assertError('Old key does not exist', E_USER_WARNING);
-    }
-
-    /** @test */
-    public function itWillRaiseErrorIfNewKeyExists()
-    {
-        $arr = ['x', 'y', 'z' => '1'];
-
-        // Changing a key to a key that already exist should thrown error with default settings.
-        $this->Arrays->renameKey($arr, 1, 'z');
-        $this->assertError('New key already exists', E_USER_WARNING);
-    }
-
-    /** @test */
-    public function itWontRaiseErrorIfOldKeyIsNotFoundWhenIgnoreMissingIsTrue()
-    {
-        $arr = ['x', 'y', 'z' => '1'];
-
-        // This should not raise an error, since ignoreMissing is set to true.
-        $this->Arrays->renameKey($arr, 'a', 'b', TRUE);
-        $this->assertNoErrors();
+        $this->assertEquals($expArr, $newArr);
     }
 }
-
