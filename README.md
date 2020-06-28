@@ -1,5 +1,5 @@
 # GeekLab-ToolBox
-[![Build Status](https://travis-ci.com/ellisgl/GeekLab-ToolBox.svg?branch=master)](https://travis-ci.com/ellisgl/GeekLab-ToolBox)
+[![Build Status](https://travis-ci.com/ellisgl/GeekLab-ToolBox.svg?branch=release)](https://travis-ci.com/ellisgl/GeekLab-ToolBox)
 
 Just some "utility" classes for PHP.
 
