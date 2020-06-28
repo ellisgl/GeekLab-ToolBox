@@ -4,6 +4,11 @@ before_script:
 - composer --version
 - composer install -n
 language: php
+# safelist
+branches:
+  only:
+  - release
+  - develop
 php:
   - '7.2'
 script:
