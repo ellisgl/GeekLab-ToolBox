@@ -12,3 +12,5 @@ Just some "utility" classes for PHP.
 * [Strings](docs/Strings.md)
 * [Is](docs/Is.md)
 
+
+Change to trigger Travis.
