@@ -10,13 +10,12 @@ class Arrays
      * @param array    $array
      * @param callable $callback
      */
-    public function explore(array &$array, callable $callback): void
+    public static function explore(array &$array, callable $callback): void
     {
-        array_walk($array, function (&$value, $key) use (&$array, $callback)
+        array_walk($array, static function (&$value, $key) use (&$array, $callback)
         {
-            if (is_array($value))
-            {
-                $this->explore($value, $callback);
+            if (is_array($value)) {
+                self::explore($value, $callback);
             }
 
             $callback($array, $key, $value);
@@ -28,29 +27,25 @@ class Arrays
      */
 
     /**
-     * @param  array      $array
-     * @param  string|int $oldKey
-     * @param  string|int $newKey
-     * @param  bool       $recursive
+     * @param array        $array
+     * @param string | int $oldKey
+     * @param string | int $newKey
+     * @param bool         $recursive
+     *
      * @return array
      */
-    public function renameKey(array $array, $oldKey, $newKey, bool $recursive = FALSE): array
+    public static function renameKey(array $array, $oldKey, $newKey, bool $recursive = false): array
     {
         $newArray = [];
 
-        foreach ($array as $k => $v)
-        {
-            if (is_array($v) && TRUE == $recursive)
-            {
-                $v = $this->renameKey($v, $oldKey, $newKey, TRUE);
+        foreach ($array as $k => $v) {
+            if (is_array($v) && true === $recursive) {
+                $v = self::renameKey($v, $oldKey, $newKey, true);
             }
 
-            if ($k === $oldKey)
-            {
+            if ($k === $oldKey) {
                 $newArray[$newKey] = $v;
-            }
-            else
-            {
+            } else {
                 $newArray[$k] = $v;
             }
         }
@@ -63,11 +58,13 @@ class Arrays
      * Return the first key in an array.
      *
      * @param array $array
-     * @return int|null|string
+     *
+     * @return int | string | null
      */
-    public function firstKey(array $array)
+    public static function firstKey(array $array)
     {
         reset($array);
+
         return key($array);
     }
 
@@ -75,9 +72,10 @@ class Arrays
      * Return the last key in an array.
      *
      * @param array $array
-     * @return int|null|string
+     *
+     * @return int | null | string
      */
-    public function lastKey(array $array)
+    public static function lastKey(array $array)
     {
         end($array);
         return key($array);
@@ -85,20 +83,24 @@ class Arrays
 
     /**
      * Return the first value in an array
+     *
      * @param array $array
+     *
      * @return mixed
      */
-    public function firstValue(array $array)
+    public static function firstValue(array $array)
     {
         return array_shift($array);
     }
 
     /**
      * Return the last value in an array
+     *
      * @param array $array
+     *
      * @return mixed
      */
-    public function lastValue(array $array)
+    public static function lastValue(array $array)
     {
         return array_pop($array);
     }

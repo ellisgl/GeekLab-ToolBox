@@ -1,30 +1,16 @@
 <?php
 
-class Arrays_exploreTest extends \Codeception\Test\Unit
+use Codeception\Test\Unit;
+use GeekLab\ToolBox\Arrays;
+
+class Arrays_exploreTest extends Unit
 {
-    /**
-     * @var \UnitTester
-     */
+    /** @var UnitTester $tester */
     protected $tester;
 
-    /**
-     * @var \GeekLab\ToolBox\Arrays
-     */
-    protected $Arrays;
 
-    protected function _before()
-    {
-        $this->Arrays = new GeekLab\ToolBox\Arrays();
-    }
-
-    protected function _after()
-    {
-    }
-
-    // tests
-
-    /** @test */
-    public function testExploreWithRenameKeys()
+    // Tests.
+    public function testExploreWithRenameKeys(): void
     {
         $cnt = [
             '@' => 0,
@@ -56,14 +42,11 @@ class Arrays_exploreTest extends \Codeception\Test\Unit
             '_' => 5
         ];
 
-        $this->Arrays->explore($array, function ($value, $key) use (&$cnt)
+        Arrays::explore($array, function ($value, $key) use (&$cnt)
         {
-            if ('@' === substr($key, 0, 1))
-            {
+            if (strpos($key, '@') === 0) {
                 $cnt['@']++;
-            }
-            elseif ('_' === substr($key, 0, 1))
-            {
+            } elseif (strpos($key, '_') === 0) {
                 $cnt['_']++;
             }
         });

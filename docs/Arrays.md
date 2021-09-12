@@ -1,7 +1,5 @@
 # \GeekLab\ToolBox\Arrays
 ## Basic usage:
-`$Arrays = new \GeekLab\ToolBox\Arrays();`
-
 ## explore(array &$array, callable $callback): void
 ### Description:
 Recursive version of array_walk and is different from array_walk_recursive, since array_walk_recursive will only visit leaf nodes. \GeekLab\ToolBox\Arrays::explore will hit visit all nodes.
@@ -20,7 +18,7 @@ Will return an array with a renamed a key with the order preserved.
         'def' => 2
     ];
      
-    $Arrays->renameKey($array, 'def', 'DefLeppard');
+    \GeekLab\ToolBox\Arrays::renameKey($array, 'def', 'DefLeppard');
 
 ## firstKey(array $array)
 ### Description:
@@ -33,7 +31,7 @@ Returns the first key of an array.
             'def' => 2
         ];
  
-    $fk = $Arrays->firstKey($array);
+    $fk = \GeekLab\ToolBox\Arrays::firstKey($array);
 
 ## lastKey(array $array)
 ### Description:
@@ -46,7 +44,7 @@ Returns the last key of an array.
                 'def' => 2
             ];
      
-    $lk = $Arrays->lastKey($array);
+    $lk = \GeekLab\ToolBox\Arrays::lastKey($array);
 
 ## firstValue(array $array)
 ### Description:
@@ -59,7 +57,7 @@ Returns the first value of an array.
             'def' => 2
         ];
  
-    $fv = $Arrays->firstValue($array);
+    $fv = \GeekLab\ToolBox\Arrays::firstValue($array);
 
 ## lastValue(array $array)
 ### Description: Returns the last value of an array.
@@ -71,4 +69,4 @@ Returns the first value of an array.
             'def' => 2
         ];
  
-    $fv = $Arrays->lastValue($array);
+    $fv = \GeekLab\ToolBox\Arrays::lastValue($array);

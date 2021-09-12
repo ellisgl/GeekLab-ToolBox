@@ -1,42 +1,24 @@
 <?php
 
+use GeekLab\ToolBox\Strings;
+
 class Strings_beingsWithTest extends \Codeception\Test\Unit
 {
-    /**
-     * @var \UnitTester
-     */
+    /** @var UnitTester $tester */
     protected $tester;
 
-    /**
-     * @var \GeekLab\ToolBox\Strings
-     */
-    protected $Strings;
 
-    /**
-     * @var string
-     */
-    protected $testStr = 'Silly Sally wanted Peter Piper\'s pumpkin pie.';
+    /** @var string $testStr */
+    protected $testStr = "Silly Sally wanted Peter Piper's pumpkin pie.";
 
-    protected function _before()
+    // Tests.
+    public function testItCanMatchBeginsWith(): void
     {
-        $this->Strings = new \GeekLab\ToolBox\Strings();
+        $this->assertTrue(Strings::beginsWith($this->testStr, 'Silly'));
     }
 
-    protected function _after()
+    public function testItCantMatchBeginsWith(): void
     {
-    }
-
-    // tests
-
-    /** @test */
-    public function itCanMatchBeginsWith()
-    {
-        $this->assertTrue($this->Strings->beginsWith($this->testStr, 'Silly'));
-    }
-
-    /** @test */
-    public function itCantMatchBeginsWith()
-    {
-        $this->assertFalse($this->Strings->beginsWith($this->testStr, 'Sally'));
+        $this->assertFalse(Strings::beginsWith($this->testStr, 'Sally'));
     }
 }

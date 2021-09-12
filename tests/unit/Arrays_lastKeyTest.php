@@ -1,38 +1,21 @@
 <?php
 
-class Arrays_lastKeyTest extends \Codeception\Test\Unit
+use Codeception\Test\Unit;
+use GeekLab\ToolBox\Arrays;
+
+class Arrays_lastKeyTest extends Unit
 {
-    /**
-     * @var \UnitTester
-     */
+    /** @var UnitTester $tester */
     protected $tester;
 
-    /**
-     * @var \GeekLab\ToolBox\Arrays
-     */
-    protected $Arrays;
-
-    protected function _before()
+    // Tests.
+    public function TestItCanReturnTheLastKey(): void
     {
-        $this->Arrays = new GeekLab\ToolBox\Arrays();
+        $this->assertEquals(0, Arrays::lastKey(['a' => 'ccc', 'b' => 'aaa', 'c' => 'ddd', 'xxx']));
     }
 
-
-    protected function _after()
+    public function TestItWillReturnBlankOnEmptyArray(): void
     {
-    }
-
-    // tests
-
-    /** @test */
-    public function itCanReturnTheLastKey()
-    {
-        $this->assertEquals(0, $this->Arrays->lastKey(['a' => 'ccc', 'b' => 'aaa', 'c' => 'ddd', 'xxx']));
-    }
-
-    /** @test */
-    public function itWillReturnBlankOnEmptyArray()
-    {
-        $this->assertEquals('', $this->Arrays->lastKey([]));
+        $this->assertEquals('', Arrays::lastKey([]));
     }
 }

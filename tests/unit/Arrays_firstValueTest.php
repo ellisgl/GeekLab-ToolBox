@@ -1,38 +1,21 @@
 <?php
 
-class Arrays_firstValueTest extends \Codeception\Test\Unit
+use Codeception\Test\Unit;
+use GeekLab\ToolBox\Arrays;
+
+class Arrays_firstValueTest extends Unit
 {
-    /**
-     * @var \UnitTester
-     */
+    /** @var UnitTester $tester */
     protected $tester;
 
-    /**
-     * @var \GeekLab\ToolBox\Arrays
-     */
-    protected $Arrays;
-
-    protected function _before()
+    // Tests.
+    public function testItCanReturnTheFirstValue(): void
     {
-        $this->Arrays = new GeekLab\ToolBox\Arrays();
+        $this->assertEquals('ccc', Arrays::firstValue(['a' => 'ccc', 'b' => 'aaa', 'c' => 'ddd', 'xxx']));
     }
 
-
-    protected function _after()
+    public function testItWillReturnBlankOnEmptyArray(): void
     {
-    }
-
-    // tests
-
-    /** @test */
-    public function itCanReturnTheFirstValue()
-    {
-        $this->assertEquals('ccc', $this->Arrays->firstValue(['a' => 'ccc', 'b' => 'aaa', 'c' => 'ddd', 'xxx']));
-    }
-
-    /** @test */
-    public function itWillReturnBlankOnEmptyArray()
-    {
-        $this->assertEquals('', $this->Arrays->firstValue([]));
+        $this->assertEquals('', Arrays::firstValue([]));
     }
 }

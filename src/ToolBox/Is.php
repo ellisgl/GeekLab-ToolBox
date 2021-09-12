@@ -12,7 +12,7 @@ class Is
      * @param  bool $nullValid Should NULL be considered as not empty?
      * @return bool
      */
-    public function empty($something, $nullValid = false): bool
+    public static function empty($something, bool $nullValid = false): bool
     {
         return (('' === $something || (NULL === $something && !$nullValid)) && 0 !== $something && '0' !== $something);
     }

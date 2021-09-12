@@ -1,37 +1,21 @@
 <?php
 
-class Arrays_firstKeyTest extends \Codeception\Test\Unit
+use Codeception\Test\Unit;
+use GeekLab\ToolBox\Arrays;
+
+class Arrays_firstKeyTest extends Unit
 {
-    /**
-     * @var \UnitTester
-     */
+    /** @var UnitTester $tester */
     protected $tester;
 
-    /**
-     * @var \GeekLab\ToolBox\Arrays
-     */
-    protected $Arrays;
-
-    protected function _before()
+    // Tests.
+    public function testItCanReturnTheFirstKey(): void
     {
-        $this->Arrays = new GeekLab\ToolBox\Arrays();
+        $this->assertEquals('a', Arrays::firstKey(['a' => 'ccc', 'b' => 'aaa', 'c' => 'ddd', 'xxx']));
     }
 
-
-    protected function _after()
+    public function testItWillReturnBlankOnEmptyArray(): void
     {
-    }
-
-    // tests
-    /** @test */
-    public function itCanReturnTheFirstKey()
-    {
-        $this->assertEquals('a', $this->Arrays->firstKey(['a' => 'ccc', 'b' => 'aaa', 'c' => 'ddd', 'xxx']));
-    }
-
-    /** @test */
-    public function itWillReturnBlankOnEmptyArray()
-    {
-        $this->assertEquals('', $this->Arrays->firstKey([]));
+        $this->assertEquals('', Arrays::firstKey([]));
     }
 }

@@ -1,26 +1,21 @@
 <?php
 
+use Codeception\Test\Unit;
 use DigiTickets\PHPUnit\ErrorHandler;
+use GeekLab\ToolBox\Arrays;
 
-class Arrays_renameKeyTest extends \Codeception\Test\Unit
+class Arrays_renameKeyTest extends Unit
 {
     use ErrorHandler;
 
-    /**
-     * @var \UnitTester
-     */
+    /** @var UnitTester $tester */
     protected $tester;
 
-    /**
-     * @var \GeekLab\ToolBox\Arrays
-     */
-    protected $Arrays;
-
+    /** @var array $array */
     private $array;
 
-    protected function _before()
+    protected function _before(): void
     {
-        $this->Arrays = new GeekLab\ToolBox\Arrays();
         $this->array  = [
             '_10fish' => 'xyz',
             '_11fish' => [
@@ -45,12 +40,7 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
         ];
     }
 
-    protected function _after()
-    {
-    }
-
-    /** @test */
-    public function itCanChangeOnlyARootLevelStringKeyToString()
+    public function testItCanChangeOnlyARootLevelStringKeyToString(): void
     {
         $expArr = [
             '10fish'  => 'xyz',
@@ -75,14 +65,12 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
             'u'
         ];
 
-        $newArr = $this->Arrays->renameKey($this->array, '_10fish', '10fish');
+        $newArr = Arrays::renameKey($this->array, '_10fish', '10fish');
 
         $this->assertEquals($expArr, $newArr);
     }
 
-
-    /** @test */
-    public function itCanChangeStingKeyToStringRecursively()
+    public function testItCanChangeStingKeyToStringRecursively(): void
     {
         $expArr = [
             '10fish'  => 'xyz',
@@ -107,13 +95,12 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
             'u'
         ];
 
-        $newArr = $this->Arrays->renameKey($this->array, '_10fish', '10fish', TRUE);
+        $newArr = Arrays::renameKey($this->array, '_10fish', '10fish', TRUE);
 
         $this->assertEquals($expArr, $newArr);
     }
 
-    /** @test */
-    public function itCanChangeOnlyARootLevelIntegerKeyToString()
+    public function testItCanChangeOnlyARootLevelIntegerKeyToString(): void
     {
         $expArr = [
             '_10fish' => 'xyz',
@@ -138,13 +125,12 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
             1         => 'u'
         ];
 
-        $newArr = $this->Arrays->renameKey($this->array, 0, 'ZERO', FALSE);
+        $newArr = Arrays::renameKey($this->array, 0, 'ZERO', FALSE);
 
         $this->assertEquals($expArr, $newArr);
     }
 
-    /** @test */
-    public function itCanChangeAnIntegerKeyToStringRecursively()
+    public function testItCanChangeAnIntegerKeyToStringRecursively(): void
     {
         $expArr = [
             '_10fish' => 'xyz',
@@ -172,13 +158,12 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
             'ONE'     => 'u'
         ];
 
-        $newArr = $this->Arrays->renameKey($this->array, 1, 'ONE', TRUE);
+        $newArr = Arrays::renameKey($this->array, 1, 'ONE', TRUE);
 
         $this->assertEquals($expArr, $newArr);
     }
 
-    /** @test */
-    public function itCanChangeOnlyARootLevelStringKeyToInteger()
+    public function testItCanChangeOnlyARootLevelStringKeyToInteger(): void
     {
         $expArr = [
             10        => 'xyz',
@@ -203,13 +188,12 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
             1         => 'u'
         ];
 
-        $newArr = $this->Arrays->renameKey($this->array, '_10fish', 10);
+        $newArr = Arrays::renameKey($this->array, '_10fish', 10);
 
         $this->assertEquals($expArr, $newArr);
     }
 
-    /** @test */
-    public function itCanChangeAStringKeyToIntegerRecursively()
+    public function testItCanChangeAStringKeyToIntegerRecursively(): void
     {
         $expArr = [
             10        => 'xyz',
@@ -234,7 +218,7 @@ class Arrays_renameKeyTest extends \Codeception\Test\Unit
             1         => 'u'
         ];
 
-        $newArr = $this->Arrays->renameKey($this->array, '_10fish', 10, TRUE);
+        $newArr = Arrays::renameKey($this->array, '_10fish', 10, TRUE);
 
         $this->assertEquals($expArr, $newArr);
     }

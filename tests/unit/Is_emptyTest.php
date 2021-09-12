@@ -1,53 +1,37 @@
 <?php
 
-class Is_emptyTest extends \Codeception\Test\Unit
+use Codeception\Test\Unit;
+use GeekLab\ToolBox\Is;
+
+class Is_emptyTest extends Unit
 {
-    /**
-     * @var \UnitTester
-     */
+    /** @var UnitTester $tester */
     protected $tester;
-    /**
-     * @var \GeekLab\ToolBox\Is
-     */
-    protected $Is;
 
-    protected function _before()
+    // Tests.
+    public function testItShouldReturnTrueOnBlank(): void
     {
-        $this->Is = new GeekLab\ToolBox\Is();
+        $this->assertTrue(Is::empty(''));
     }
 
-    protected function _after()
+
+    public function testItShouldReturnFalseOnStringZero(): void
     {
+        $this->assertFalse(Is::empty('0'));
     }
 
-    // tests
-    /** @test */
-    public function itShouldReturnTrueOnBlank()
+    public function testItShouldReturnFalseOnIntegerZero(): void
     {
-        $this->assertTrue($this->Is->empty(''));
+        $this->assertFalse(Is::empty('0'));
     }
 
-    /** @test */
-    public function itShouldReturnFalseOnStringZero()
+    public function testItShouldReturnTrueOnNull(): void
     {
-        $this->assertFalse($this->Is->empty('0'));
+        $this->assertTrue(Is::empty(null));
     }
 
-    /** @test */
-    public function itShouldReturnFalseOnIntegerZero()
+    public function testItShouldReturnFalseOnNullIfNullValidIsTrue(): void
     {
-        $this->assertFalse($this->Is->empty('0'));
-    }
-
-    /** @test */
-    public function itShouldReturnTrueOnNull()
-    {
-        $this->assertTrue($this->Is->empty(NULL));
-    }
-
-    /** @test */
-    public function itShouldReturnFalseOnNullIfNullValidIsTrue()
-    {
-        $this->assertFalse($this->Is->empty(NULL, TRUE));
+        $this->assertFalse(Is::empty(null, true));
     }
 }

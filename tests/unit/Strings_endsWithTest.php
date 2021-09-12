@@ -1,42 +1,24 @@
 <?php
 
-class Strings_endsWithTest extends \Codeception\Test\Unit
+use Codeception\Test\Unit;
+use GeekLab\ToolBox\Strings;
+
+class Strings_endsWithTest extends Unit
 {
-    /**
-     * @var \UnitTester
-     */
+    /** @var UnitTester $tester */
     protected $tester;
 
-    /**
-     * @var \GeekLab\ToolBox\Strings
-     */
-    protected $Strings;
+    /** @var string $testStr */
+    protected $testStr = "Silly Sally wanted Peter Piper's pumpkin pie.";
 
-    /**
-     * @var string
-     */
-    protected $testStr = 'Silly Sally wanted Peter Piper\'s pumpkin pie.';
-
-    protected function _before()
+    // Tests.
+    public function testItCanMatchEndsWith(): void
     {
-        $this->Strings = new \GeekLab\ToolBox\Strings();
+        $this->assertTrue(Strings::endsWith($this->testStr, 'pie.'));
     }
 
-    protected function _after()
+    public function testItCantMatchEndsWith(): void
     {
-    }
-
-    // tests
-
-    /** @test */
-    public function itCanMatchEndsWith()
-    {
-        $this->assertTrue($this->Strings->endsWith($this->testStr, 'pie.'));
-    }
-
-    /** @test */
-    public function itCantMatchEndsWith()
-    {
-        $this->assertFalse($this->Strings->endsWith($this->testStr, 'Peter'));
+        $this->assertFalse(Strings::endsWith($this->testStr, 'Peter'));
     }
 }

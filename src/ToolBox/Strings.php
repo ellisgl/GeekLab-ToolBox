@@ -11,7 +11,7 @@ class Strings
      * @param string $needle
      * @return bool
      */
-    public function beginsWith(string $haystack, string $needle): bool
+    public static function beginsWith(string $haystack, string $needle): bool
     {
         return (!empty($needle) && 0 === strpos($haystack, $needle));
     }
@@ -24,7 +24,7 @@ class Strings
      * @param string $needle
      * @return bool
      */
-    public function endsWith(string $haystack, string $needle): bool
+    public static function endsWith(string $haystack, string $needle): bool
     {
         return substr($haystack, -strlen($needle)) === $needle;
     }
