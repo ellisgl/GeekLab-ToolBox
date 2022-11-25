@@ -28,14 +28,18 @@ class Arrays
 
     /**
      * @param array        $array
-     * @param string | int $oldKey
-     * @param string | int $newKey
+     * @param int | string $oldKey
+     * @param int | string $newKey
      * @param bool         $recursive
      *
      * @return array
      */
-    public static function renameKey(array $array, $oldKey, $newKey, bool $recursive = false): array
-    {
+    public static function renameKey(
+        array $array,
+        int | string $oldKey,
+        int | string $newKey,
+        bool $recursive = false
+    ): array {
         $newArray = [];
 
         foreach ($array as $k => $v) {
@@ -53,7 +57,6 @@ class Arrays
         return $newArray;
     }
 
-
     /**
      * Return the first key in an array.
      *
@@ -61,7 +64,7 @@ class Arrays
      *
      * @return int | string | null
      */
-    public static function firstKey(array $array)
+    public static function firstKey(array $array): int | string | null
     {
         reset($array);
 
@@ -75,7 +78,7 @@ class Arrays
      *
      * @return int | null | string
      */
-    public static function lastKey(array $array)
+    public static function lastKey(array $array): int | string | null
     {
         end($array);
         return key($array);
@@ -88,7 +91,7 @@ class Arrays
      *
      * @return mixed
      */
-    public static function firstValue(array $array)
+    public static function firstValue(array $array): mixed
     {
         return array_shift($array);
     }
@@ -100,7 +103,7 @@ class Arrays
      *
      * @return mixed
      */
-    public static function lastValue(array $array)
+    public static function lastValue(array $array): mixed
     {
         return array_pop($array);
     }

@@ -13,7 +13,7 @@ class Strings
      */
     public static function beginsWith(string $haystack, string $needle): bool
     {
-        return (!empty($needle) && 0 === strpos($haystack, $needle));
+        return (!empty($needle) && str_starts_with($haystack, $needle));
     }
 
 
@@ -26,6 +26,6 @@ class Strings
      */
     public static function endsWith(string $haystack, string $needle): bool
     {
-        return substr($haystack, -strlen($needle)) === $needle;
+        return str_ends_with($haystack, $needle);
     }
 }
