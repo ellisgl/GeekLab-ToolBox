@@ -10,15 +10,14 @@
         }
     ],
     "require": {
-        "php": "^8.1"
+        "php": "^8.3"
     },
     "require-dev": {
-        "codeception/codeception": "^5.0",
-        "spatie/phpunit-snapshot-assertions": "^4.2",
+        "codeception/codeception": "^5.3",
         "digitickets/phpunit-errorhandler": "^4.1",
-        "codeception/module-asserts": "^3.0",
+        "codeception/module-asserts": "^3.3",
         "phpstan/phpstan": "^2",
-        "squizlabs/php_codesniffer": "^3"
+        "squizlabs/php_codesniffer": "^4"
     },
     "autoload": {
         "psr-4": {
