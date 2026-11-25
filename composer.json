@@ -16,11 +16,18 @@
         "codeception/codeception": "^5.0",
         "spatie/phpunit-snapshot-assertions": "^4.2",
         "digitickets/phpunit-errorhandler": "^4.1",
-        "codeception/module-asserts": "^3.0"
+        "codeception/module-asserts": "^3.0",
+        "phpstan/phpstan": "^2",
+        "squizlabs/php_codesniffer": "^3"
     },
-    "autoload"          : {
-        "psr-4" : {
-            "GeekLab\\" : "src"
+    "autoload": {
+        "psr-4": {
+            "GeekLab\\": "src"
         }
+    },
+    "scripts": {
+        "test": "codecept run unit",
+        "phpstan": "phpstan analyse --no-progress",
+        "phpcs": "phpcs src --standard=PSR12 -n"
     }
 }

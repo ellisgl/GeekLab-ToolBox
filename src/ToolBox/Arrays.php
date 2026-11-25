@@ -7,13 +7,12 @@ class Arrays
     /**
      * Recursive array_walk, since array_walk_recursive only deal with the outer leafs / nodes.
      *
-     * @param array    $array
-     * @param callable $callback
+     * @param array<mixed> $array
+     * @param callable     $callback
      */
     public static function explore(array &$array, callable $callback): void
     {
-        array_walk($array, static function (&$value, $key) use (&$array, $callback)
-        {
+        array_walk($array, static function (&$value, $key) use (&$array, $callback) {
             if (is_array($value)) {
                 self::explore($value, $callback);
             }
@@ -27,12 +26,12 @@ class Arrays
      */
 
     /**
-     * @param array        $array
+     * @param array<mixed> $array
      * @param int | string $oldKey
      * @param int | string $newKey
      * @param bool         $recursive
      *
-     * @return array
+     * @return array<mixed>
      */
     public static function renameKey(
         array $array,
@@ -60,7 +59,7 @@ class Arrays
     /**
      * Return the first key in an array.
      *
-     * @param array $array
+     * @param array<mixed> $array
      *
      * @return int | string | null
      */
@@ -74,7 +73,7 @@ class Arrays
     /**
      * Return the last key in an array.
      *
-     * @param array $array
+     * @param array<mixed> $array
      *
      * @return int | null | string
      */
@@ -87,7 +86,7 @@ class Arrays
     /**
      * Return the first value in an array
      *
-     * @param array $array
+     * @param array<mixed> $array
      *
      * @return mixed
      */
@@ -99,7 +98,7 @@ class Arrays
     /**
      * Return the last value in an array
      *
-     * @param array $array
+     * @param array<mixed> $array
      *
      * @return mixed
      */
