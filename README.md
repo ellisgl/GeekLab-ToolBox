@@ -3,6 +3,7 @@
 [![Packagist Version](https://img.shields.io/packagist/v/geeklab/toolbox)](https://packagist.org/packages/geeklab/toolbox)
 [![PHP Version](https://img.shields.io/packagist/dependency-v/geeklab/toolbox/php)](https://packagist.org/packages/geeklab/toolbox)
 [![PHPStan](https://img.shields.io/badge/PHPStan-level%2010-brightgreen)](https://phpstan.org/)
+[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg)](LICENSE.BSD)
 
 Just some "utility" classes for PHP.
 

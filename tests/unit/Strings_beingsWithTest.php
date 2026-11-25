@@ -21,4 +21,19 @@ class Strings_beingsWithTest extends \Codeception\Test\Unit
     {
         $this->assertFalse(Strings::beginsWith($this->testStr, 'Sally'));
     }
+
+    public function testItCanMatchZeroNeedle(): void
+    {
+        $this->assertTrue(Strings::beginsWith('012', '0'));
+    }
+
+    public function testItCantMatchZeroNeedleElsewhere(): void
+    {
+        $this->assertFalse(Strings::beginsWith('102', '0'));
+    }
+
+    public function testEmptyNeedleNeverMatches(): void
+    {
+        $this->assertFalse(Strings::beginsWith($this->testStr, ''));
+    }
 }
